@@ -1,12 +1,12 @@
-#!/bin/sh
-while [ 1 ]
+#!/bin/bash
+while 'true'
 do
-   waitTime=".06s"
-   #waitTime=$(shuf -i 1-5 -n 1)
+   events_per_min='60'
+   waitTime=$(bc <<< "scale=2; 60/$events_per_min")
    sleep $waitTime &
    wait $!
    instruction=$(shuf -i 0-4 -n 1)
-   d=`date -Iseconds`
+   d=$(date -Iseconds)
    case "$instruction" in
       "1") echo "{\"@timestamp\": \"$d\", \"level\": \"ERROR\", \"message\": \"something happened in this execution.\"}"
       ;;
