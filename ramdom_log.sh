@@ -1,5 +1,5 @@
 #!/bin/bash
-events_per_min='6000'
+events_per_min='60'
 while 'true'
 do
    waitTime=$(bc <<< "scale=2; 60/$events_per_min")
